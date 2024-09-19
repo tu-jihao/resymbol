@@ -1,12 +1,10 @@
 Package: resymbol
 Title: Using local gene files to update symbols. Only unique symbols will be returned.
 Version: 1.0
-Authors@R: 
-    person("Tu jihao" , "haotuji@hotmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "0009-0007-2527-5309"))
+Authors@R: c(person("Jihao", "Developer", role = c("aut", "cre"),
+                     email = "haotuji@hotmail.com"))
 Description: Old symbols –> symbols not included in the newest symbol list –> symbols that matches only one time with previous/alias symbol –> matched new symbols for the remaining. The input symbols that didn't match the new symbol column in hgnc_complete_set.txt will be regarded as old symbols. Old symbols that matches only one time in first previous symbols list and if no matches then the alias symbols list will be used for matching new symbols.
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+License: GPL >= 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2

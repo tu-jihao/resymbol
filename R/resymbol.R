@@ -28,11 +28,11 @@ resymbol = function(hgnc_complete_set = hgnc_complete_set,nameold){
     separate(col = prev_symbol, into = paste0("prev_name_", 1:max(length1)), sep = "\\|", extra = "merge", fill = "right")
 
   ifchange = rep(F,length(nameold))
-  aliaschange = c()
-  prevchange = c()
-  prenumber = c()
-  aliasnumber = c()
-  newname = c()
+  aliaschange = rep(NA,length(nameold))
+  prevchange = rep(NA,length(nameold))
+  prenumber = rep(NA,length(nameold))
+  aliasnumber = rep(NA,length(nameold))
+  newname = rep(NA,length(nameold))
   hgncsingle = hgnc_complete_set[,c("symbol","alias_symbol","prev_symbol")]
   for (i in 1:length(nameold)) {
     if (nameold[i]%in%hgnc_complete_set$symbol) {
@@ -64,14 +64,9 @@ resymbol = function(hgnc_complete_set = hgnc_complete_set,nameold){
 
     }
   }
-  end = length(nameold)+1
-  newname[end] = NA;newname = newname[-end]
-  ifchange[end] = NA;ifchange = ifchange[-end]
-  prevchange[end] = NA;prevchange = prevchange[-end]
-  prenumber[end] = NA;prenumber <- prenumber[-end]
-  aliasnumber[end] = NA;aliasnumber <- aliasnumber[-end]
-  aliaschange[end] = NA;aliaschange <- aliaschange[-end]
+
   nametotal = data.frame(old = nameold,newname,ifchange,prevchange,prenumber,aliaschange,aliasnumber)
   nametotal$newname_to_use = ifelse(ifchange,nametotal$newname,nametotal$old)
+  nametotal$newname_to_use = ifelse(duplicated(nametotal$newname_to_use)|duplicated(nametotal$newname_to_use,fromLast = T),nametotal$old,nametotal$newname_to_use)
   return(nametotal)
 }
