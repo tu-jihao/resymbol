@@ -23,6 +23,9 @@ Update Gene Symbols Uniquely
 
 </p>
 
+
+### 安装/Install
+remotes::install_github("tu-jihao/resymbol")
  
 ### 所需文件下载/To download genefiles
 
