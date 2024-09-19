@@ -34,6 +34,7 @@ https://ftp.ebi.ac.uk/pub/databases/genenames/hgnc/archive/
 
 ### 示例/Example
 library(dplyr)  
+library(tifyr)  
 hgnc_complete_set <- read.delim("hgnc_complete_set.txt")  
 nameold = c("TP53","CD206")  
 nametotal = resymbol(hgnc_complete_set,nameold)
